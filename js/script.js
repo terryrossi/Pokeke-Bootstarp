@@ -68,11 +68,15 @@ const pokemonRepository = (function () {
 	////////////////////////////////////////////////
 	function addListItem(pokemon) {
 		// Variables from DOM Elements:
-		const row = document.querySelector(".row");
+		const pokemonCards = document.querySelector(".pokemon-cards");
+
+		// const row = document.createElement("div");
+		// row.classList.add("row");
+		// pokemonCards.appendChild(row);
 
 		const col = document.createElement("div");
 		col.classList.add("col-3");
-		row.appendChild(col);
+		pokemonCards.appendChild(col);
 
 		// Create Card
 		const card = document.createElement("div");
@@ -96,8 +100,8 @@ const pokemonRepository = (function () {
 		button.classList.add("btn-primary");
 		button.innerText = "Details";
 		button.setAttribute("type", "button");
-		// button.setAttribute("data-toggle", "modal");
-		// button.setAttribute("data-target", "#pokemonModal");
+		button.setAttribute("data-toggle", "modal");
+		button.setAttribute("data-target", "#pokemonModal");
 		cardBody.appendChild(button);
 
 		// add eventListener to the Button
@@ -118,7 +122,6 @@ const pokemonRepository = (function () {
 	}
 	///////////////////////////////////////////////////////////////
 	function showModal(pokemon) {
-		console.log("in showModal...");
 		const modalContainer = document.querySelector("#pokemonModal");
 		modalContainer.innerHTML = "";
 		// Add Modal
@@ -129,36 +132,47 @@ const pokemonRepository = (function () {
 		modalContainer.appendChild(modalDialog);
 
 		const modalContent = document.createElement("div");
+
 		modalContent.classList.add("modal-content");
+
 		modalDialog.appendChild(modalContent);
-
-		// Modal Header
-		const modalHeader = document.createElement("div");
-		modalHeader.classList.add("modal-header");
-		modalContent.appendChild(modalHeader);
-
-		const modalTitle = document.createElement("h1");
-		modalTitle.classList.add("modal-title");
-		modalTitle.setAttribute("id", "pokemonTitle");
-		modalTitle.innerText = pokemon.name;
-		modalHeader.appendChild(modalTitle);
 
 		modalCloseButton = document.createElement("button");
 		modalCloseButton.classList.add("close");
+		modalCloseButton.classList.add("text-right");
 		modalCloseButton.setAttribute("type", "button");
 		modalCloseButton.setAttribute("data-dismiss", "modal");
 		modalCloseButton.setAttribute("aria-label", "Close");
 
 		const cross = document.createElement("span");
+
 		cross.setAttribute("aria-hidden", "true");
-		cross.innerText = "&times;";
+		cross.innerHTML = "&times;";
 		modalCloseButton.appendChild(cross);
 
-		modalHeader.appendChild(modalCloseButton);
+		modalContent.appendChild(modalCloseButton);
+
+		// Modal Header
+		const modalHeader = document.createElement("div");
+		modalHeader.classList.add("modal-header");
+
+		modalContent.appendChild(modalHeader);
+
+		const modalTitle = document.createElement("h1");
+		modalTitle.classList.add("modal-title");
+		modalTitle.classList.add("text-center");
+		modalTitle.classList.add("col-12");
+		modalTitle.classList.add("text-capitalize");
+
+		modalTitle.setAttribute("id", "pokemonTitle");
+		modalTitle.innerText = pokemon.name;
+
+		modalHeader.appendChild(modalTitle);
 
 		// Modal Body
 		const modalBody = document.createElement("div");
 		modalBody.classList.add("modal-body");
+		modalBody.classList.add("text-center");
 		modalContent.appendChild(modalBody);
 
 		// Add Modal Items
@@ -173,15 +187,15 @@ const pokemonRepository = (function () {
 		const modalText = document.createElement("div");
 		modalText.classList.add("modal-text");
 
-		const modalName = document.createElement("h1");
-		modalName.classList.add("modal-h1");
-		modalName.innerText = pokemon.name;
+		// const modalName = document.createElement("h1");
+		// modalName.classList.add("modal-h1");
+		// modalName.innerText = pokemon.name;
 
-		const modalHeight = document.createElement("h4");
+		const modalHeight = document.createElement("h1");
 		modalHeight.classList.add("modal-text");
 		modalHeight.innerText = `Height: ${pokemon.height} Inches`;
 
-		modalText.appendChild(modalName);
+		// modalText.appendChild(modalName);
 		modalText.appendChild(modalHeight);
 
 		modalBody.appendChild(modalImage);
@@ -195,9 +209,9 @@ const pokemonRepository = (function () {
 		// modalContainer.classList.add("is-visible");
 	}
 	///////////////////////////////////////////////////////////////
-	function hideModal() {
-		modalContainer.classList.remove("is-visible");
-	}
+	// function hideModal() {
+	// 	modalContainer.classList.remove("is-visible");
+	// }
 	///////////////////////////////////////////////////////////////
 	// Escape Key Close the Modal
 	// window.addEventListener("keydown", (e) => {
