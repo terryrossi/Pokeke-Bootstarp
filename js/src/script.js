@@ -71,7 +71,9 @@ const pokemonRepository = (function () {
 		const pokemonCards = document.querySelector(".pokemon-cards");
 
 		const col = document.createElement("div");
-		col.classList.add("col-3");
+		col.classList.add("col-md-3");
+		col.classList.add("col-sm-6");
+		col.classList.add("col-xs-12");
 		pokemonCards.appendChild(col);
 
 		// Create Card
@@ -197,6 +199,7 @@ const pokemonRepository = (function () {
 		const buttonFooterClose = document.createElement("button");
 		buttonFooterClose.classList.add("btn");
 		buttonFooterClose.classList.add("btn-primary");
+		buttonFooterClose.setAttribute("type", "button");
 		buttonFooterClose.setAttribute("data-bs-dismiss", "modal");
 		buttonFooterClose.setAttribute("aria-label", "Close");
 		buttonFooterClose.innerText = "Close";

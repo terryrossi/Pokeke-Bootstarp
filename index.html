@@ -29,7 +29,7 @@
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="css/styles.css" />
+			href="css/src/styles.css" />
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -44,12 +44,12 @@
 					title="Pokedex"
 			/></a>
 			<a
-				class="navbar-brand"
+				class="navbar-brand ml-md-5"
 				href="#"
 				><h2>Welcome to POKEDEX!</h2></a
 			>
 			<button
-				class="navbar-toggler"
+				class="navbar-toggler mr-2"
 				type="button"
 				data-toggle="collapse"
 				data-target="#nav"
@@ -61,7 +61,7 @@
 				class="collapse navbar-collapse"
 				id="nav">
 				<ul class="navbar-nav">
-					<li class="nav-item active">
+					<li class="nav-item ml-5 active">
 						<a
 							href="#"
 							class="nav-link"
@@ -69,11 +69,18 @@
 							>Home <span class="sr-only">(current)</span></a
 						>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item ml-5">
 						<a
 							href="https://terryrossi.github.io/portfolio-website/"
 							class="nav-link active"
-							>About the Creator</a
+							>Creator's Portfolio</a
+						>
+					</li>
+					<li class="nav-item ml-5">
+						<a
+							href="https://github.com/terryrossi/Pokeke-Bootstarp"
+							class="nav-link active"
+							>See on GitHub</a
 						>
 					</li>
 				</ul>
@@ -87,20 +94,21 @@
 			<!-- pokemon-container -->
 			<div class="pokemon-container m-3">
 				<div class="pokemon-cards row"></div>
-				<div
-					class="modal fade"
-					id="pokemonModal"
-					tabindex="-1"
-					role="dialog"
-					aria-labelledby="pokemonTitle"
-					aria-hidden="true"></div>
 			</div>
+			<div
+				class="modal fade"
+				id="pokemonModal"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="pokemonTitle"
+				aria-hidden="true"></div>
 
 			<hr />
 		</main>
+
 		<script src="./js/promise-polyfill.js"></script>
 		<script src="./js/fetch-polyfill.js"></script>
-		<script src="./js/script.js"></script>
+		<script src="./js/src/script.js"></script>
 
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script
