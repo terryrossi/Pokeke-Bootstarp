@@ -70,10 +70,6 @@ const pokemonRepository = (function () {
 		// Variables from DOM Elements:
 		const pokemonCards = document.querySelector(".pokemon-cards");
 
-		// const row = document.createElement("div");
-		// row.classList.add("row");
-		// pokemonCards.appendChild(row);
-
 		const col = document.createElement("div");
 		col.classList.add("col-3");
 		pokemonCards.appendChild(col);
@@ -81,6 +77,8 @@ const pokemonRepository = (function () {
 		// Create Card
 		const card = document.createElement("div");
 		card.classList.add("card");
+		card.classList.add("mb-3");
+		card.classList.add("align-self-stretch");
 		card.classList.add("text-center");
 		col.appendChild(card);
 
@@ -100,8 +98,8 @@ const pokemonRepository = (function () {
 		button.classList.add("btn-primary");
 		button.innerText = "Details";
 		button.setAttribute("type", "button");
-		button.setAttribute("data-toggle", "modal");
-		button.setAttribute("data-target", "#pokemonModal");
+		button.setAttribute("data-bs-toggle", "modal");
+		button.setAttribute("data-bs-target", "#pokemonModal");
 		cardBody.appendChild(button);
 
 		// add eventListener to the Button
@@ -132,42 +130,37 @@ const pokemonRepository = (function () {
 		modalContainer.appendChild(modalDialog);
 
 		const modalContent = document.createElement("div");
-
 		modalContent.classList.add("modal-content");
-
 		modalDialog.appendChild(modalContent);
-
-		modalCloseButton = document.createElement("button");
-		modalCloseButton.classList.add("close");
-		modalCloseButton.classList.add("text-right");
-		modalCloseButton.setAttribute("type", "button");
-		modalCloseButton.setAttribute("data-dismiss", "modal");
-		modalCloseButton.setAttribute("aria-label", "Close");
-
-		const cross = document.createElement("span");
-
-		cross.setAttribute("aria-hidden", "true");
-		cross.innerHTML = "&times;";
-		modalCloseButton.appendChild(cross);
-
-		modalContent.appendChild(modalCloseButton);
 
 		// Modal Header
 		const modalHeader = document.createElement("div");
 		modalHeader.classList.add("modal-header");
-
 		modalContent.appendChild(modalHeader);
 
 		const modalTitle = document.createElement("h1");
 		modalTitle.classList.add("modal-title");
-		modalTitle.classList.add("text-center");
-		modalTitle.classList.add("col-12");
-		modalTitle.classList.add("text-capitalize");
-
+		// modalTitle.classList.add("text-center");
+		// modalTitle.classList.add("col-12");
+		// modalTitle.classList.add("text-capitalize");
 		modalTitle.setAttribute("id", "pokemonTitle");
 		modalTitle.innerText = pokemon.name;
-
 		modalHeader.appendChild(modalTitle);
+
+		// Modal Close Button
+		const modalCloseButton = document.createElement("button");
+		modalCloseButton.classList.add("btn-close");
+		// modalCloseButton.classList.add("text-right");
+		modalCloseButton.setAttribute("type", "button");
+		modalCloseButton.setAttribute("data-bs-dismiss", "modal");
+		modalCloseButton.setAttribute("aria-label", "Close");
+
+		const cross = document.createElement("span");
+		cross.setAttribute("aria-hidden", "true");
+		cross.innerHTML = "&times;";
+		modalCloseButton.appendChild(cross);
+
+		modalHeader.appendChild(modalCloseButton);
 
 		// Modal Body
 		const modalBody = document.createElement("div");
@@ -187,19 +180,28 @@ const pokemonRepository = (function () {
 		const modalText = document.createElement("div");
 		modalText.classList.add("modal-text");
 
-		// const modalName = document.createElement("h1");
-		// modalName.classList.add("modal-h1");
-		// modalName.innerText = pokemon.name;
-
 		const modalHeight = document.createElement("h1");
 		modalHeight.classList.add("modal-text");
 		modalHeight.innerText = `Height: ${pokemon.height} Inches`;
 
-		// modalText.appendChild(modalName);
 		modalText.appendChild(modalHeight);
 
 		modalBody.appendChild(modalImage);
 		modalBody.appendChild(modalText);
+
+		// Modal Footer
+		const modalFooter = document.createElement("div");
+		modalFooter.classList.add("modal-footer");
+		modalContent.appendChild(modalFooter);
+
+		const buttonFooterClose = document.createElement("button");
+		buttonFooterClose.classList.add("btn");
+		buttonFooterClose.classList.add("btn-primary");
+		buttonFooterClose.setAttribute("data-bs-dismiss", "modal");
+		buttonFooterClose.setAttribute("aria-label", "Close");
+		buttonFooterClose.innerText = "Close";
+
+		modalFooter.appendChild(buttonFooterClose);
 
 		$("#pokemonModal").modal("show");
 
