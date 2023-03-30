@@ -204,32 +204,8 @@ const pokemonRepository = (function () {
 		modalFooter.appendChild(buttonFooterClose);
 
 		$("#pokemonModal").modal("show");
-
-		// modal.appendChild(modalCloseButton);
-		// modalContainer.appendChild(modal);
-
-		// modalContainer.classList.add("is-visible");
 	}
-	///////////////////////////////////////////////////////////////
-	// function hideModal() {
-	// 	modalContainer.classList.remove("is-visible");
-	// }
-	///////////////////////////////////////////////////////////////
-	// Escape Key Close the Modal
-	// window.addEventListener("keydown", (e) => {
-	// 	if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
-	// 		hideModal();
-	// 	}
-	// });
-	///////////////////////////////////////////////////////////////
-	// Click outside of modal Closes Modal
-	// modalContainer.addEventListener("click", (event) => {
-	// 	// event.preventDefault();
-	// 	const target = event.target;
-	// 	if (target === modalContainer) {
-	// 		hideModal();
-	// 	}
-	// });
+
 	///////////////////////////////////////////////////////////////
 	function search(searchName) {
 		// Find Pokemon

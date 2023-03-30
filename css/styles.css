@@ -1,42 +1,4 @@
 /*
-Colors used:
-Text Color (Dark Gray): #2b2b2b;
-Background Color (light Blue/Gray): rgb(247, 247, 247);
-Secondary Color (Orange): #e0b354;
-
-Fonts:
-font-family: 'Gloock', serif;
-font-family: 'Lato', sans-serif;
-font-family: 'Roboto', sans-serif;
-font-family: 'Playfair Display', serif;
-
-Style: 
-font-style: italic;
-font-variant: small-caps;
-text-decoration: underline;
-font-weight: bold;
-
-Attribute Selector:
-input[type=”text”]
- */
-
-/* CSS VARIABLES */
-/* CSS VARIABLES */
-/* 
-:root {
-	--background-color: rgb(247, 247, 247);
-	--background-color-grid-item: rgb(228, 244, 250);
-	--background-color-dark: rgb(58, 19, 6);
-	--background-color-about-table-th: #036c84;
-	--background-color-experience-type: #cedfe6;
-	--background-color-button: #036c84;
-	--primary-color: #357b70;
-	--secondary-color: #e93e0f;
-	--dark-grey: #2b2b2b;
-	--hover-color: #0683e8;
-	--font-size: 16px;
-	--font-weight: 400px;
-} */
 
 /* CROSS LINE */
 hr {
@@ -49,27 +11,6 @@ hr {
 		rgba(0, 0, 0, 0.25)
 	);
 }
-
-/* END OF GENERAL SETTINGS */
-
-/**********************************************************/
-
-/* HEADER FOR ALL PAGES */
-
-/* HEADER NAV-BAR USES "DISPLAY = FLEX" */
-
-/* Make the header a Flex-box which will include 2 items */
-/* .page-header { */
-/* display: grid; */
-/* grid-template-columns: 1fr 1fr 1fr; */
-/* grid-template-rows: 1; */
-/* justify-content: space-between; */
-/* align-items: center; */
-/* } */
-/* .welcome-title { */
-/* grid-column-start: 2; */
-/* text-align: center; */
-/* } */
 
 .page-header__logo--images {
 	width: 100px;
