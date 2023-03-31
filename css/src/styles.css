@@ -17,6 +17,9 @@ hr {
 	border-radius: 50px;
 	box-shadow: 1px 1px 10px 0px rgb(41, 39, 39);
 }
+.shadow {
+	box-shadow: 1px 1px 10px 0px rgb(41, 39, 39);
+}
 .card {
 	background-color: rgb(223, 231, 238);
 	box-shadow: 1px 1px 10px 0px rgb(41, 39, 39);

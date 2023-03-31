@@ -66,9 +66,9 @@ const pokemonRepository = (function () {
 			});
 	}
 	////////////////////////////////////////////////
-	function addListItem(pokemon) {
+	function addListItem(pokemon, pokemonCards) {
 		// Variables from DOM Elements:
-		const pokemonCards = document.querySelector(".pokemon-cards");
+		// const pokemonCards = document.querySelector(".pokemon-cards");
 
 		const col = document.createElement("div");
 		col.classList.add("col-md-3");
@@ -249,9 +249,35 @@ const pokemonRepository = (function () {
 /////////////////////////////////// PROGRAM FLOW... ///////////////////////////////
 //
 //
-//  FETCH ALL POKEMONS FROM API then SHOW ALL POKEMONS
+// DOM ELEMENT FOR POKEMONS
+const pokemonCards = document.querySelector(".pokemon-cards");
+
+//  FETCH ALL POKEMONS FROM API
 pokemonRepository.loadPokeListFromApi().then(function () {
 	pokemonRepository.getAll().forEach(function (pokemon) {
-		pokemonRepository.addListItem(pokemon);
+		pokemonRepository.addListItem(pokemon, pokemonCards);
 	});
+});
+// Check for search input DOM Element
+const pokemonSearchForm = document.getElementById("search-form");
+pokemonSearchForm.addEventListener("submit", function (e) {
+	e.preventDefault;
+	const inputSearch = document.getElementById("search-input");
+
+	// Check for searched Pokemon
+	const listOfPkemonFound = pokemonRepository.getAll().filter(function (pokemon) {
+		if (pokemon.name.includes(inputSearch.value)) {
+			return pokemon.name;
+		}
+	});
+
+	// If Pokemons found from search, Show searched Pokemons
+	if (listOfPkemonFound) {
+		// Delete previous list of Cards on the DOM
+		pokemonCards.innerHTML = "";
+
+		listOfPkemonFound.forEach(function (pokemon) {
+			pokemonRepository.addListItem(pokemon, pokemonCards);
+		});
+	}
 });

@@ -91,6 +91,27 @@
 			<!-- <hr /> -->
 			<div class="message-loading hidden"><h1>Loading...</h1></div>
 
+			<!-- Search Input -->
+			<div class="container d-flex justify-content-center">
+				<form id="search-form">
+					<div class="input-group col-12 d-flex justify-content-center mt-3">
+						<div class="input-group-prepend shadow">
+							<span
+								class="input-group-text"
+								id="pokemon-search"
+								>Pokemon Name</span
+							>
+						</div>
+						<input
+							type="text"
+							class="form-control col-8 shadow"
+							id="search-input"
+							aria-label="Pokemon Search input"
+							aria-describedby="pokemon-search" />
+						<button class="btn-xs shadow">Search</button>
+					</div>
+				</form>
+			</div>
 			<!-- pokemon-container -->
 			<div class="pokemon-container m-3">
 				<div class="pokemon-cards row"></div>
