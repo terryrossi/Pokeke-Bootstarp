@@ -55,7 +55,7 @@ const pokemonRepository = (function () {
 			})
 			.then(function (pokemonDetails) {
 				// Pokemon details received from API
-				pokemon.imageUrl = pokemonDetails.sprites.other.home.front_default;
+				pokemon.imageUrl = pokemonDetails.sprites.other.dream_world.front_default;
 				pokemon.height = pokemonDetails.height;
 				pokemon.types = pokemonDetails.types;
 				hideLoadingMessage();
