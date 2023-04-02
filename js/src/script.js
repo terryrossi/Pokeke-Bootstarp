@@ -21,7 +21,6 @@ const pokemonRepository = (function () {
 	////////////////////////////////////////////////
 	function loadPokeListFromApi() {
 		// Fetch Pokemons from API
-		console.log("loadPokeListFromApi()...");
 		showLoadingMessage();
 
 		return fetch(apiUrl)
@@ -90,8 +89,6 @@ const pokemonRepository = (function () {
 		card.appendChild(cardBody);
 
 		const titleH5 = document.createElement("h5");
-		titleH5.classList.add("card-title");
-
 		// add Pokemon name to card
 		titleH5.innerText = pokemon.name;
 		cardBody.appendChild(titleH5);
@@ -113,30 +110,34 @@ const pokemonRepository = (function () {
 	///////////////////////////////////////////////////////////////
 
 	function addEventListenerToButton(button, type, pokemon) {
-		console.log("addEventListenerToButton...");
 		button.addEventListener(type, function (event) {
-			console.log("button clicked to go to showdetails...");
 			showDetails(pokemon);
 		});
 	}
 	///////////////////////////////////////////////////////////////
 	function showDetails(pokemon) {
-		console.log("in showdetails...");
 		// shows details when Pokemon clicked on
 		loadDetails(pokemon).then(function () {
-			console.log("going to showModal...");
 			showModal(pokemon);
 		});
 	}
 	///////////////////////////////////////////////////////////////
 	function showModal(pokemon) {
-		console.log("in showModal...");
+		// CamelCase Converter (For multiple words)
+		const camelFunction = function (name) {
+			const words = name.split(" ");
+			const wordsCamel = [];
+			for (const w of words) {
+				wordsCamel.push(w.slice(0, 1).toUpperCase() + w.slice(1));
+			}
+			return wordsCamel.join(" ");
+		};
+
 		const modalContainer = document.querySelector("#pokemonModal");
-		console.log("modalContainer", modalContainer);
 		// modalContainer.innerHTML = "";
 
 		const modalTitle = document.querySelector("#pokemonTitle");
-		modalTitle.innerText = pokemon.name;
+		modalTitle.innerText = camelFunction(pokemon.name);
 
 		const modalImage = document.querySelector("#modal-image");
 		modalImage.setAttribute("src", pokemon.imageUrl);

@@ -37,8 +37,9 @@ hr {
 	display: none;
 }
 
-.modal-image {
+#modal-image {
 	width: 300px;
+	height: 300px;
 	border: 1px solid black;
 	box-shadow: 1px 1px 10px 0px rgb(41, 39, 39);
 
