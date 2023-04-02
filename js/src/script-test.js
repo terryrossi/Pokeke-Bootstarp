@@ -8,9 +8,10 @@
 const pokemonRepository = (function () {
 	const pokemonList = [];
 	// let pokemon = {};
-	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+	let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1";
 
 	// FUNCTIONS...
+
 	function add(pokemon) {
 		pokemonList.push(pokemon);
 	}
@@ -47,6 +48,7 @@ const pokemonRepository = (function () {
 	////////////////////////////////////////////////
 	function loadDetails(pokemon) {
 		// fetch pokemon detail from API
+		console.log("loadDetails(pokemon)...");
 		showLoadingMessage();
 		let url = pokemon.detailsUrl;
 		return fetch(url)
@@ -70,55 +72,42 @@ const pokemonRepository = (function () {
 		// Variables from DOM Elements:
 		// const pokemonCards = document.querySelector(".pokemon-cards");
 
-		const col = document.createElement("div");
-		col.classList.add("col-md-3");
-		col.classList.add("col-sm-6");
-		col.classList.add("col-xs-12");
-		pokemonCards.appendChild(col);
+		// const col = document.createElement("div");
+		// col.classList.add("col-md-3");
+		// col.classList.add("col-sm-6");
+		// col.classList.add("col-xs-12");
+		// pokemonCards.appendChild(col);
 
 		// Create Card
-		const card = document.createElement("div");
-		card.classList.add("card");
-		card.classList.add("mb-3");
-		card.classList.add("align-self-stretch");
-		card.classList.add("text-center");
-		col.appendChild(card);
+		// const card = document.createElement("div");
+		// card.classList.add("card");
+		// card.classList.add("mb-3");
+		// card.classList.add("align-self-stretch");
+		// card.classList.add("text-center");
+		// col.appendChild(card);
 
 		// Create Card-body
-		const cardBody = document.createElement("div");
-		cardBody.classList.add("card-body");
-		card.appendChild(cardBody);
+		// const cardBody = document.createElement("div");
+		// cardBody.classList.add("card-body");
+		// card.appendChild(cardBody);
 
-		const titleH5 = document.createElement("h5");
-		titleH5.classList.add("card-title");
+		// const titleH5 = document.createElement("h5");
+		// titleH5.classList.add("card-title");
 
 		// add Pokemon name to card
-		titleH5.innerText = pokemon.name;
-		cardBody.appendChild(titleH5);
+		// titleH5.innerText = pokemon.name;
+		// cardBody.appendChild(titleH5);
 
 		// add Details Button to open Modal
-		const button = document.createElement("button");
-		button.classList.add("btn");
-		button.classList.add("btn-primary");
-		button.innerText = "Details";
-		button.setAttribute("type", "button");
-		button.setAttribute("data-bs-toggle", "modal");
-		button.setAttribute("data-bs-target", "#pokemonModal");
-		cardBody.appendChild(button);
+		const button = document.getElementById("buttonModal");
 
-		// add eventListener to the Button
-		addEventListenerToButton(button, "click", pokemon);
-	}
-
-	///////////////////////////////////////////////////////////////
-
-	function addEventListenerToButton(button, type, pokemon) {
-		console.log("addEventListenerToButton...");
-		button.addEventListener(type, function (event) {
+		button.addEventListener("click", function (event) {
+			event.preventDefault();
 			console.log("button clicked to go to showdetails...");
 			showDetails(pokemon);
 		});
 	}
+
 	///////////////////////////////////////////////////////////////
 	function showDetails(pokemon) {
 		console.log("in showdetails...");
@@ -130,9 +119,8 @@ const pokemonRepository = (function () {
 	}
 	///////////////////////////////////////////////////////////////
 	function showModal(pokemon) {
-		console.log("in showModal...");
 		const modalContainer = document.querySelector("#pokemonModal");
-		console.log("modalContainer", modalContainer);
+
 		// modalContainer.innerHTML = "";
 
 		const modalTitle = document.querySelector("#pokemonTitle");
@@ -146,6 +134,7 @@ const pokemonRepository = (function () {
 		modalHeight.innerText = `Height: Inches`;
 
 		$("#pokemonModal").modal("toggle");
+		// modalContainer.show();
 	}
 
 	///////////////////////////////////////////////////////////////
