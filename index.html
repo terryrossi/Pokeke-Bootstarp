@@ -29,7 +29,7 @@
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="css/src/styles.css" />
+			href="./dist/css/styles.css" />
 	</head>
 	<body>
 		<!-- Nav Bar with Image, Title and Links (Collapsable) -->
@@ -109,9 +109,34 @@
 							id="search-input"
 							aria-label="Pokemon Search input"
 							aria-describedby="pokemon-search" />
-						<button class="btn-xs shadow">Search</button>
+
+						<div
+							class="btn-group"
+							role="group"
+							aria-label="Search and Show all Buttons">
+							<button
+								class="btn btn-xs shadow"
+								id="search"
+								type="button">
+								Search
+							</button>
+
+							<button
+								class="btn btn-xs shadow"
+								id="show-all"
+								type="button">
+								Show all
+							</button>
+						</div>
 					</div>
 				</form>
+			</div>
+
+			<!-- Warning message -->
+			<div class="container">
+				<div
+					class="row justify-content-center"
+					id="message-warning"></div>
 			</div>
 
 			<!-- Pokemon Modal -->
@@ -157,30 +182,14 @@
 
 			<!-- pokemon container -->
 			<div class="pokemon-container m-3">
-				<div class="pokemon-cards row">
-					<!-- <div class="col-md-3 col-sm-6 col-xs-12"> -->
-					<!-- <div class="card mb-3 align-self-stretch text-center">
-							<div class="card-body">
-								<h5 class="card-title"></h5>
-								<button
-									class="btn btn-primary"
-									id="buttonDetails"
-									type="button"
-									data-bs-toggle="modal"
-									data-bs-target="#pokemonModal">
-									Details
-								</button>
-							</div>
-						</div> -->
-					<!-- </div> -->
-				</div>
+				<div class="pokemon-cards row"></div>
 			</div>
 			<hr />
 		</main>
 
-		<script src="./js/promise-polyfill.js"></script>
-		<script src="./js/fetch-polyfill.js"></script>
-		<script src="./js/src/script.js"></script>
+		<script src="./dist/js/promise-polyfill.js"></script>
+		<script src="./dist/js/fetch-polyfill.js"></script>
+		<script src="./dist/js/script.js"></script>
 
 		<!-- jQuery first, NO Popper.js for V5, then Bootstrap JS -->
 		<script
