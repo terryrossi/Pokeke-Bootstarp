@@ -94,6 +94,7 @@ const pokemonRepository = (function () {
 										})(t.name);
 										let o = document.querySelector('#modal-image');
 										o.setAttribute('src', t.imageUrl);
+										o.setAttribute('alt', 'Pokemon Image Front');
 										let i = document.querySelector('#modal-heigth');
 										(i.innerText = `Height: ${t.height} Inches`),
 											(i.innerText = 'Height: Inches');
