@@ -175,7 +175,6 @@ const pokemonRepository = (function () {
 	////////////////////////////////////////////////////////////////
 	function showLoadingMessage() {
 		errorMessage('Loading...');
-		// messageLoading.classList.remove('hidden');
 	}
 	////////////////////////////////////////////////////////////////
 	function hideLoadingMessage() {

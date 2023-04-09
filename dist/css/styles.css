@@ -24,18 +24,6 @@ hr {
 	background-color: rgb(223, 231, 238);
 	box-shadow: 1px 1px 10px 0px rgb(41, 39, 39);
 }
-.message-loading {
-	position: fixed;
-	/* border: 1px solid black; */
-	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-	border-radius: 5px;
-	box-shadow: 1px 1px 10px 0px rgb(41, 39, 39);
-	top: 0px;
-	right: 0px;
-}
-.hidden {
-	display: none;
-}
 
 #modal-image {
 	width: 300px;
@@ -44,4 +32,8 @@ hr {
 	box-shadow: 1px 1px 10px 0px rgb(41, 39, 39);
 
 	border-radius: 9px;
+}
+.modal-div {
+	flex: 3;
+	text-align: center;
 }
