@@ -45,3 +45,7 @@ hr {
 
 	border-radius: 9px;
 }
+.modal-div {
+	flex: 3;
+	text-align: center;
+}

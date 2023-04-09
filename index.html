@@ -29,7 +29,7 @@
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="./dist/css/styles.css" />
+			href="./src/css/styles.css" />
 	</head>
 	<body>
 		<!-- Nav Bar with Image, Title and Links (Collapsable) -->
@@ -160,9 +160,11 @@
 					role="document">
 					<div class="modal-content">
 						<div class="modal-header align-items-start">
-							<h1
-								class="modal-title"
-								id="pokemonTitle"></h1>
+							<div class="modal-div">
+								<h1
+									class="modal-title"
+									id="pokemonTitle"></h1>
+							</div>
 							<button
 								class="btn-close"
 								type="button"
@@ -192,6 +194,48 @@
 			<div class="pokemon-container m-3">
 				<div class="pokemon-cards row"></div>
 			</div>
+			<!-- PAGINATION -->
+			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center">
+					<li class="page-item">
+						<a
+							class="page-link"
+							href="#"
+							aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a
+							class="page-link"
+							href="#"
+							>1</a
+						>
+					</li>
+					<li class="page-item">
+						<a
+							class="page-link"
+							href="#"
+							>2</a
+						>
+					</li>
+					<li class="page-item">
+						<a
+							class="page-link"
+							href="#"
+							>3</a
+						>
+					</li>
+					<li class="page-item">
+						<a
+							class="page-link"
+							href="#"
+							aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 			<hr />
 		</main>
 		<!-- Footer -->
@@ -213,7 +257,7 @@
 
 		<script src="./dist/js/promise-polyfill.js"></script>
 		<script src="./dist/js/fetch-polyfill.js"></script>
-		<script src="./dist/js/script.js"></script>
+		<script src="./src/js/script.js"></script>
 
 		<!-- jQuery first, NO Popper.js for V5, then Bootstrap JS -->
 		<script

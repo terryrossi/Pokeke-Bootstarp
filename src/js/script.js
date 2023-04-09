@@ -1,10 +1,12 @@
 //
+const maxNumberOfPokemons = 150;
 //
 // Initialize list of Pokemons using IIFE to protect variables
 
 const pokemonRepository = (function () {
 	let pokemonList = [];
-	let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
+	let apiUrl = `https://pokeapi.co/api/v2/pokemon/?limit=${maxNumberOfPokemons}`;
 
 	// FUNCTIONS...
 	function add(pokemon) {
@@ -12,7 +14,8 @@ const pokemonRepository = (function () {
 	}
 	///////////////////////////////////////////////
 	function getAll() {
-		return pokemonList;
+		const pokemonListSorted = pokemonList.sort((a, b) => (a.name > b.name ? 1 : -1));
+		return pokemonListSorted;
 	}
 	////////////////////////////////////////////////
 	function loadPokeListFromApi() {
@@ -135,7 +138,6 @@ const pokemonRepository = (function () {
 
 		const modalHeight = document.querySelector('#modal-heigth');
 		modalHeight.innerText = `Height: ${pokemon.height} Inches`;
-		modalHeight.innerText = 'Height: Inches';
 
 		// $('#pokemonModal').modal('toggle');
 	}
@@ -186,22 +188,86 @@ const searchButton = document.getElementById('search');
 const showAllButton = document.getElementById('show-all');
 const inputSearch = document.getElementById('search-input');
 const messageBox = document.getElementById('message-warning');
+// DOM Element for Pagination NavBar
+const paginationBar = document.querySelector('.pagination');
 
-//  FETCH ALL POKEMONS FROM API for initial page view
-function showAll() {
+// Pagination variables:
+let currentPage = 1;
+let pokemonsPerPage = 16;
+
+//  FETCH ALL POKEMONS FROM API and Shows only 1 page
+function show1Page(page) {
+	page--;
+
+	let start = pokemonsPerPage * page;
+	let end = start + pokemonsPerPage;
+	console.log(start, end);
+
+	pokemonCards.innerHTML = '';
+
 	pokemonRepository.loadPokeListFromApi().then(function () {
-		pokemonRepository.getAll().forEach(function (pokemon) {
-			pokemonRepository.addListItem(pokemon);
-		});
+		pokemonRepository
+			.getAll()
+			.slice(start, end)
+			.forEach(function (pokemon) {
+				pokemonRepository.addListItem(pokemon);
+			});
 	});
 }
-showAll();
+// Initial page load shows first 1 page.
+// show1Page(pokemonsPerPage, currentPAge);
+
+// Setup PAgination Nav Bar
+function setupPagination(element) {
+	element.innerHTML = '';
+
+	let pageCount = Math.ceil(maxNumberOfPokemons / pokemonsPerPage);
+	console.log('pageCount = ', pageCount);
+	for (let i = 1; i <= pageCount; i++) {
+		let btn = createPaginationButton(i);
+		console.log(i, btn);
+		element.appendChild(btn);
+	}
+}
+
+// Create each NavBar Pagination Button
+function createPaginationButton(page) {
+	const buttonLiTag = document.createElement('li');
+	buttonLiTag.classList.add('page-item');
+
+	const buttonATag = document.createElement('a');
+	buttonATag.classList.add('page-link');
+	buttonATag.setAttribute('href', '#');
+	buttonATag.innerText = page;
+
+	buttonLiTag.appendChild(buttonATag);
+
+	if (currentPage == page) {
+		buttonLiTag.classList.add('active');
+	}
+
+	buttonLiTag.addEventListener('click', function () {
+		currentPage = page;
+		console.log(currentPage, page);
+		show1Page(currentPage);
+
+		let currentButton = document.querySelector('.page-item.active');
+		currentButton.classList.remove('active');
+
+		this.classList.add('active');
+	});
+	return buttonLiTag;
+}
+
+show1Page(currentPage);
+setupPagination(paginationBar);
 
 // SHOW ALL POKEMONS Button
 showAllButton.addEventListener('click', function (e) {
 	e.preventDefault();
 	pokemonCards.innerHTML = '';
-	showAll();
+	show1Page(1);
+	// setupPagination(paginationBar);
 });
 
 // SEARCH POKEMONS (when Search Button is clicked)
@@ -225,17 +291,15 @@ searchButton.addEventListener('click', function (e) {
 		let listOfPkemonFound = [];
 		listOfPkemonFound = pokemonRepository.getAll().filter(function (pokemon) {
 			if (pokemon.name.includes(inputSearch.value)) {
-				return pokemon.name;
+				return pokemon;
 			}
 		});
+		// Delete previous list of Cards on the DOM
+		pokemonCards.innerHTML = '';
 		// If Pokemons found from search, Show searched Pokemons
-		if (listOfPkemonFound) {
-			// Delete previous list of Cards on the DOM
-			pokemonCards.innerHTML = '';
-			// Create a New list of Pokemons
-			listOfPkemonFound.forEach(function (pokemon) {
-				pokemonRepository.addListItem(pokemon);
-			});
-		}
+		// and Create a New list of Pokemons
+		listOfPkemonFound?.forEach(function (pokemon) {
+			pokemonRepository.addListItem(pokemon);
+		});
 	}
 });
