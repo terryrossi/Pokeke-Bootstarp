@@ -5,6 +5,7 @@
 const pokemonRepository = (function () {
 	// DOM ELEMENTS
 	const messageBox = document.getElementById('message-warning');
+	const paginationBar = document.querySelector('.pagination');
 
 	// VARIABLES
 	// Full list of Pokemons
@@ -173,13 +174,12 @@ const pokemonRepository = (function () {
 	}
 	////////////////////////////////////////////////////////////////
 	function showLoadingMessage() {
-		const messageLoading = document.querySelector('.message-loading');
-		messageLoading.classList.remove('hidden');
+		errorMessage('Loading...');
+		// messageLoading.classList.remove('hidden');
 	}
 	////////////////////////////////////////////////////////////////
 	function hideLoadingMessage() {
-		const messageLoading = document.querySelector('.message-loading');
-		messageLoading.classList.add('hidden');
+		messageBox.innerHTML = '';
 	}
 	////////////////////////////////////////////////////////////////
 	// ERROR MESSAGE
@@ -281,6 +281,7 @@ const pokemonRepository = (function () {
 		showPage,
 		setupPagination,
 		messageBox,
+		paginationBar,
 		errorMessage,
 		resetDomElements,
 		maxNumberOfPokemons,
@@ -300,8 +301,6 @@ const pokemonCards = document.querySelector('.pokemon-cards');
 const searchButton = document.getElementById('search');
 const showAllButton = document.getElementById('show-all');
 const inputSearch = document.getElementById('search-input');
-// DOM Element for Pagination NavBar
-const paginationBar = document.querySelector('.pagination');
 
 // Reset DOM Elements
 // pokemonRepository.resetDomElements();
@@ -313,7 +312,10 @@ let pokemonsPerPage = 16;
 // Initial page load shows first 1 page.
 pokemonRepository.show1stPage(currentPage);
 
-pokemonRepository.setupPagination(pokemonRepository.maxNumberOfPokemons, paginationBar);
+pokemonRepository.setupPagination(
+	pokemonRepository.maxNumberOfPokemons,
+	pokemonRepository.paginationBar
+);
 pokemonRepository.listOfPokemons = pokemonRepository.getAll();
 // Due to Promise, listOfPokemons.length always = 0 :(
 console.log(pokemonRepository.listOfPokemons.length);
@@ -323,11 +325,16 @@ showAllButton.addEventListener('click', function (e) {
 	e.preventDefault();
 
 	pokemonRepository.resetDomElements();
+	pokemonRepository.paginationBar.innerHTML = '';
+	inputSearch.value = '';
 
 	currentPage = 1;
 	pokemonRepository.listOfPokemons = pokemonRepository.getAll();
 	pokemonRepository.show1stPage(currentPage);
-	pokemonRepository.setupPagination(pokemonRepository.listOfPokemons.length, paginationBar);
+	pokemonRepository.setupPagination(
+		pokemonRepository.listOfPokemons.length,
+		pokemonRepository.paginationBar
+	);
 });
 
 // SEARCH POKEMONS (when Search Button is clicked)
@@ -335,6 +342,7 @@ searchButton.addEventListener('click', function (e) {
 	e.preventDefault();
 
 	pokemonRepository.resetDomElements();
+	pokemonRepository.paginationBar.innerHTML = '';
 
 	// Check if input field is empty to avoid refetching the same Pokemons
 	if (!inputSearch.value) {
@@ -351,7 +359,10 @@ searchButton.addEventListener('click', function (e) {
 		if (listOfPkemonFound) {
 			currentPage = 1;
 			pokemonRepository.showPage(listOfPkemonFound, currentPage);
-			pokemonRepository.setupPagination(listOfPkemonFound.length, paginationBar);
+			pokemonRepository.setupPagination(
+				listOfPkemonFound.length,
+				pokemonRepository.paginationBar
+			);
 		}
 	}
 });
