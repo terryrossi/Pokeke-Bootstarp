@@ -25,6 +25,7 @@ To view a list of data and see more details for a given item from the Pokemon AP
 - The app loads data from an external API; for instance: "https://pokeapi.co/api/v2/pokemon";
 
 - The app displays a list of items loaded from that API after the page is loaded.
+- The App shows the list of pokemons sorted by alphabetic order on names.
 - The App includes a Pagination Feature using a Bootstrap Navbar.
 - The pagination is also available for searched items.
 - The Display is done using Bootstrap Cards.
